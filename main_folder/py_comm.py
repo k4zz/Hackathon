@@ -4,19 +4,24 @@ Created on Fri Jun  8 22:22:15 2018
 
 @author: Mefisto
 """
-import py_func
 import os
 
-os.rename('commfile.txt', '_commfile.txt')
+def read_data(filedir, filename):
+    with open(os.path.join(filedir, filename), 'r') as read_file:
+        read_data = read_file.readlines()[0]
 
-with open('_commfile.txt', 'r') as in_file:
-    var = in_file.readlines()[0]
+    old_file = os.path.join(filedir, filename)
+    new_file = os.path.join(filedir, '_' + filename)
+    os.rename(old_file, new_file)
 
-command = var.split(' ')
+    command = read_data.split(' ')
 
-res = py_func.call_func(command)
+    return command
 
-with open('_commfile.txt', 'w') as out_file:
-    out_file.write(res)
+def write_data(filedir, filename, result):
+    with open(os.path.join(filedir, '_' + filename), 'w') as write_file:
+        write_file.write(result)
 
-os.rename('_commfile.txt', 'commfile.txt')
+    old_file = os.path.join(filedir, '_' + filename)
+    new_file = os.path.join(filedir, filename)
+    os.rename(old_file, new_file)

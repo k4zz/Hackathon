@@ -4,10 +4,19 @@ Created on Fri Jun  8 22:32:22 2018
 
 @author: Mefisto
 """
-def coffeeCountInc(id):
-    return 'brawo my!'
+import py_database
 
-functions = {'coffeeCountInc': coffeeCountInc}
+data = py_database.Database()
+
+def coffeeCountInc(id):
+    
+    return 'DONE'
+
+def choosePerson:
+    
+
+functions = {'coffeeCountInc': coffeeCountInc,
+             'choosePerson': choosePerson}
 
 def call_func(command):
     method = command[0]
