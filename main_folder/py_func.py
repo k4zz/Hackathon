@@ -61,7 +61,7 @@ def choosePerson(blank):
                     date_counts.append(users[maint_ID[i]][5])
             mail = users[date_ID[date_counts.index(min(date_counts))]][4]
             
-    return mail
+    return '{}\n'.format(mail)
 
 def maintDone(attr):
     ID = int(attr[0])
