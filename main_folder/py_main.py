@@ -25,4 +25,3 @@ while True:
     py_comm.write_data(comm_dir, comm_write, result)
     
     time.sleep(0.1)
-    break
