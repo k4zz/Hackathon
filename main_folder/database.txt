@@ -1,5 +1,5 @@
 1;Kazmierczak;Maciej;0;0;maciej.kazmierczak@trw.com;1;
-2;Kelcz;Sandra;0;0;sandra.kelcz@trw.com;2;
-3;Kwiatkowski;Lukasz;0;0;lukasz.kwiatkowski@trw.com;3;
-4;Pycio;Piotr;0;0;piotr.pycio@trw.com;4;
+2;Kelcz;Sandra;4;1;sandra.kelcz@trw.com;20180609;
+3;Kwiatkowski;Lukasz;4;0;lukasz.kwiatkowski@trw.com;3;
+4;Pycio;Piotr;4;1;piotr.pycio@trw.com;4;
 5;Urbanek;Karol;0;0;karol.urbanek@trw.com;5;

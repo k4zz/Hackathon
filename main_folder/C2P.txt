@@ -1,1 +1,1 @@
-addPerson Urbanek Karol karol.urbanek@trw.com 
+choosePerson 

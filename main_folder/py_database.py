@@ -64,5 +64,5 @@ class Database:
 #new_data = new.get_users()
 #
 #print(new_data[4])
-#print(new.reset_coffee_count(4))
+#print(new.incr_coffee_count(4))
 #print(new_data[4])

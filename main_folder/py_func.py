@@ -9,19 +9,19 @@ import py_database
 data = py_database.Database()
 
 def coffeeCountInc(ID):
-    data.incr_coffee_count(ID)
+    data.incr_coffee_count(int(ID[0]))
     return 'DONE'
     
 def maintCountInc(ID):
-    data.incr_maint_count(ID)
+    data.incr_maint_count(int(ID[0]))
     return 'DONE'
     
 def coffeeCountReset(ID):
-    data.reset_coffee_count(ID)
+    data.reset_coffee_count(int(ID[0]))
     return 'DONE'
     
 def maintCountReset(ID):
-    data.reset_maint_count(ID)
+    data.reset_maint_count(int(ID[0]))
     return 'DONE'
     
 def addPerson(user):
@@ -31,11 +31,38 @@ def addPerson(user):
     data.add_user(surname, name, email)
     return 'DONE'
     
-def choosePerson():
-#    users = data.get_users()
-#    coffee_counts = []
-#    for i in 
-    return None
+def choosePerson(blank):
+    users = data.get_users()
+    coffee_counts = []
+    IDs = []
+    for i in users.keys():
+        IDs.append(i)
+        coffee_counts.append(users[i][2])
+
+    max_coffee_count = coffee_counts.count(max(coffee_counts))
+    if max_coffee_count == 1:
+        mail = users[IDs[coffee_counts.index(max(coffee_counts))]][4]
+    else:
+        maint_ID = []
+        maint_counts = []
+        for i in range(len(coffee_counts)):
+            if coffee_counts[i] == max(coffee_counts):
+                maint_ID.append(IDs[i])
+                maint_counts.append(users[IDs[i]][3])
+        max_maint_count = maint_counts.count(max(maint_counts))
+        if max_maint_count == 1:
+            mail = users[maint_ID[maint_counts.index(max(maint_counts))]][4]
+        else:
+            date_ID = []
+            date_counts = []
+            for i in range(len(maint_counts)):
+                if maint_counts[i] == max(maint_counts):
+                    date_ID.append(maint_ID[i])
+                    date_counts.append(users[maint_ID[i]][5])
+            max_date_count = max(date_counts)
+            mail = users[date_ID[date_counts.index(max(date_counts))]][4]
+            
+    return mail
 
 functions = {'coffeeCountInc': coffeeCountInc,
              'maintCountInc': maintCountInc,
