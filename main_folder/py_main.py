@@ -23,10 +23,6 @@ while True:
     result = py_func.call_func(command)
     
     py_comm.write_data(comm_dir, comm_write, result)
-
-    with open(os.path.join(comm_dir, '_' + comm_write), 'w') as out_file:
-        out_file.write(result)
-
-    os.rename('_' + comm_write, comm_write)
     
     time.sleep(0.1)
+    

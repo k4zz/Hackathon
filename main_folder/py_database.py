@@ -15,12 +15,50 @@ class Database:
                 data.append(row.split(';'))
     
         for entry in data:
-            self._users[int(entry[0])] = entry[1:]
+            temp = [int(entry[0]),
+                    entry[1],
+                    entry[2],
+                    int(entry[3]),
+                    int(entry[4]),
+                    entry[5]]
+            self._users[temp[0]] = temp[1:]
 
     def get_users(self):
         return self._users
 
-new = Database()
-new_data = new.get_users()
+    def push_base(self):
+        with open('database.txt', 'w') as file:
+            for ID in self._users.keys():
+                temp = '{0};{1};{2};{3};{4};{5};\n'.format(ID,
+                                                            self._users[ID][0],
+                                                            self._users[ID][1],
+                                                            self._users[ID][2],
+                                                            self._users[ID][3],
+                                                            self._users[ID][4])
+                file.write(temp)
 
-print(Database().get_users()[4])
+    def incr_coffee_count(self, ID):
+        self._users[ID][2] += 1
+        self.push_base()
+
+    def incr_maint_count(self, ID):
+        self._users[ID][3] += 1
+        self.push_base()
+
+    def reset_coffee_count(self, ID):
+        self._users[ID][2] = 0
+        self.push_base()
+
+    def reset_maint_count(self, ID):
+        self._users[ID][3] = 0
+        self.push_base()
+
+    def add_user(self, surname, name, email):
+        self._users[max(self._users.keys())] = [surname, name, 0, 0, email]
+        
+#new = Database()
+#new_data = new.get_users()
+#
+#print(new_data[4])
+#print(new.reset_coffee_count(4))
+#print(new_data[4])
